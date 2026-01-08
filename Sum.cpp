@@ -8,52 +8,87 @@ Restrictions, assumptions:
 -	There will be only one Sum function definition, with 2 mandatory and 3 optional parameters
 */
 
-//-Functions
-// recursion functions
-//o	Typical naming conventions
-//- Overloads and templates
-//- Arrays, strings, string manipulations
-//o	Ascii vs Unicode(UTF8, 16, 32)
-//o	wcout vs cout
-//o	string tokenisation, substring, concatenation
-//- Dynamic Memory allocation, deallocation
-//o(C++ camp) New, delete pairs
-//o(C# camp) Garbage collection
-//- Structures(struct)
-
 #include <iostream>
+#include <string>
+#include <sstream>
+// have not learnt vector so use array atp
+// #include <vector>
+
 using namespace std;
 
-int sum(int k)
+int Sum(int a, int b, int c = 0, int d = 0, int e = 0) // optional parameters
 {
-    if (k > 0)
-    {
-        int result = k + sum(k - 1);
-        cout << "Value " << k << " is " << result << endl;
-        return result;
-        // --k;
-        // return k + sum(k - 1);
-    }
-    else
-    {
-        return 0;
-    }
+	return a + b + c + d + e;
 }
 
 int main()
 {
-    // for-each loop: loop through elements in an array or other data sets
-    // for (type variableName : arrayName){ // code block to be executed }
+	// declare an array for user inputs
+	// array can take in maximum 5 inputs
+	// array index is from 0
+	int arrayNumbers[5] = { 0 }; // initialize all array elements to 0
 
-    int testNumbers[5] = { 10, 20, 30, 40, 50 };
-    for (int i : testNumbers)
-    {
-        cout << i << endl;
-    }
+	// for-each loop to print out all elements in array
+	for (int i : arrayNumbers)
+	{
+		cout << i << endl;
+	}
 
-    // recursion example
-    int totalValue = sum(10);
-    cout << totalValue;
+	int count = 0;
 
-    return 0;
+	// sizeof() operator returns the size of a type in bytes
+	// int is 4bytes, so 4 bytes x 5 elements = 20 bytes
+	int getArrayLength = sizeof(arrayNumbers) / sizeof(int);
+	cout << getArrayLength << endl;
+	// OR
+	cout << "Current array size: " << sizeof(arrayNumbers) / sizeof(int) << endl;;
+
+	// get user input
+	cout << "Please input any set of numbers, minimum 2 sets of numbers and maximum 5 sets of numbers, separated by spaces: \n";
+	string inputNumbers;
+	getline(cin, inputNumbers);
+	// cin >> inputNumbers;
+
+	stringstream ss(inputNumbers); // creates an object named 'ss' and intialize with contents of the input string
+	int num; // declares a variable to temporarily hold the numbers extracted the from the stream to store in array
+
+	while (ss >> num) // populate array
+	{
+		// if (sizeof(arrayNumbers) >= 1 && sizeof(arrayNumbers) < 5)
+		if (count < 5)
+		{
+			// arrayNumbers[count++] = num;
+			arrayNumbers[count] = num;
+			// cout << "Numbers registered: " << inputNumbers << endl; - ignore
+			// cout << "Numbers registered (into array): " << arrayNumbers[i] << endl;
+		}
+		++count;
+	}
+	if (count < 2 || count > 5)
+	{
+		cout << "Error, you must enter between 2 and 5 sets of numbers, separated by spaces! Please re-run: " << endl;
+		return 0;
+	}
+
+	// calculate sum based on number of inputs
+	int result = 0;
+	switch (count)
+	{
+	case 2:
+		result = Sum(arrayNumbers[0], arrayNumbers[1]);
+		break;
+	case 3:
+		result = Sum(arrayNumbers[0], arrayNumbers[1], arrayNumbers[2]);
+		break;
+	case 4:
+		result = Sum(arrayNumbers[0], arrayNumbers[1], arrayNumbers[2], arrayNumbers[3]);
+		break;
+	case 5:
+		result = Sum(arrayNumbers[0], arrayNumbers[1], arrayNumbers[2], arrayNumbers[3], arrayNumbers[4]);
+		break;
+	}
+
+	cout << "The sum of the entered numbers is: " << result << endl;
+
+	return 0;
 }
