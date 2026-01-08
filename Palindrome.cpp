@@ -2,8 +2,9 @@
 Target practise #3:
 -	Ask user for input: 1 word
 -	Return a result indicating whether a string is a palindrome
-o	The result evaluation should ignore case. E.g. ‘APPLE’, ‘apple’ are treated the same
-o	Create one (or more, if necessary) functions to perform the check
+    o	The result evaluation should ignore case. E.g. ‘APPLE’, ‘apple’ are treated the same
+    o	Create one (or more, if necessary) functions to perform the check
+    
 Restrictions, assumptions:
 -	Do not use helper string check functions; if these are needed, write these on your own
 -	Assume user will always enter a word
