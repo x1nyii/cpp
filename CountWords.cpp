@@ -1,5 +1,5 @@
 /*
-Target practise #3:
+Target practise #5:
 -	Ask the user for a sentence
 -	Return a result indicating the number of words in the sentence.
 
