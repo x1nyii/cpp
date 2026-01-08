@@ -1,5 +1,5 @@
 /*
-Target practise #2:
+Target practise #4:
   -	Ask the user for input: one paragraph of words
   -	Return a result indicating the number of occurrences of each number, letter, upper case and lower case, and punctuation (‘APPLE’ => A=1 P=2 L=1 E=1)
     o	Letters, numbers and punctuation that is not used should not be reported
