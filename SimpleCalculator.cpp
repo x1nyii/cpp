@@ -10,86 +10,145 @@ Restrictions, assumptions:
 */
 
 #include <iostream>
-#include <string>
-#include <sstream>
-// have not learnt vector so use array atp
-// #include <vector>
+#include <limits>
+#include <cmath>
 
 using namespace std;
 
-int Sum(int a, int b, int c = 0, int d = 0, int e = 0) // optional parameters
+// Function for userinput
+void userInputs(double& firstInputNumber, double& secondInputNumber, char& operatorInput)
 {
-	return a + b + c + d + e;
+    // ask user for 2 numbers
+    // ask user for an operation
+    std::cout << "Hello! Welcome to basic calculator. You have to enter 2 numbers and an operator.\n";
+    cout << "Enter the first number: " << endl;
+
+    // does not except a decimal number...
+
+    while (!(cin >> firstInputNumber))
+    {
+        cin.clear();
+        // Discards invalid input, but stops the whole function
+        cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+        cout << "Error. Enter a number! Please re-enter the first number." << endl;
+    }
+    cout << "Success! First number registered: " << firstInputNumber << endl;
+    cout << "Enter the second number:  " << endl;
+
+    while (!(cin >> secondInputNumber))
+    {
+        cin.clear();
+        // Discards invalid input, but stops the whole function
+        cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+        cout << "Error. Enter a number! Please re-enter the second number." << endl;
+    }
+    cout << "Success! Second number registered: " << secondInputNumber << endl;
+    cout << "Please enter a math operation, either + or - or * or / or ^." << endl;
+
+    while (true)
+    {
+        cin >> operatorInput;
+        if (operatorInput == '+' || operatorInput == '-' || operatorInput == '*' || operatorInput == '/' || operatorInput == '^')
+        {
+            break;
+        }
+        else
+        {
+            cin.clear();
+            // Discards invalid input, but stops the whole function
+            cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+            cout << "Invalid operation. Please re-enter a math operation: + or - or * or / or ^." << endl;
+        }
+    }
+    cout << "Registered. You entered: " << operatorInput << endl;
 }
+
+// function declarations
+// how to use the user input as a variable of a function
+
+//int sumFunction(int firstInputNumber, int secondInputNumber)
+//{
+//    return firstInputNumber + secondInputNumber;
+//}
+
+double addFunction(double a, double b) 
+{
+    return a + b;
+}
+
+double subtractFunction(double a, double b) 
+{
+    return a - b;
+}
+
+double multiplyFunction(double a, double b) 
+{
+    return a * b;
+}
+
+double divideFunction(double a, double b) 
+{
+    if (b != 0) {
+        return a / b;
+    }
+    else {
+        cerr << "Error: Division by zero!" << std::endl;
+        return 0;
+    }
+}
+
+double powerFunction(double a, double b) {
+    return std::pow(a, b);
+}
+
 
 int main()
 {
-	// declare an array for user inputs
-	// array can take in maximum 5 inputs
-	// array index is from 0
-	int arrayNumbers[5] = { 0 }; // initialize all array elements to 0
+    double firstNumber, secondNumber;
+    char operatorInput;
 
-	// for-each loop to print out all elements in array
-	for (int i : arrayNumbers)
-	{
-		cout << i << endl;
-	}
+    // get inputs from user
+    userInputs(firstNumber, secondNumber, operatorInput);
+    // pass the variables by reference
+    // any changes made inside userInputs will be reflected in main
 
-	int count = 0;
+    // create pointer
+    double (*operationFunction)(double, double) = nullptr;
 
-	// sizeof() operator returns the size of a type in bytes
-	// int is 4bytes, so 4 bytes x 5 elements = 20 bytes
-	int getArrayLength = sizeof(arrayNumbers) / sizeof(int);
-	cout << getArrayLength << endl;
-	// OR
-	cout << "Current array size: " << sizeof(arrayNumbers) / sizeof(int) << endl;;
+    // use a function pointer and assign it to the correct function before execution
+    // do not call the function directly
 
-	// get user input
-	cout << "Please input any set of numbers, minimum 2 sets of numbers and maximum 5 sets of numbers, separated by spaces: \n";
-	string inputNumbers;
-	getline(cin, inputNumbers);
-	// cin >> inputNumbers;
+    // do a switch for each operator input
+    // pointer exist in the switch for corresponding operator
 
-	stringstream ss(inputNumbers); // creates an object named 'ss' and intialize with contents of the input string
-	int num; // declares a variable to temporarily hold the numbers extracted the from the stream to store in array
+    // double firstInputNumber, secondInputNumber;
+    // char operatorInput;
 
-	while (ss >> num) // populate array
-	{
-		// if (sizeof(arrayNumbers) >= 1 && sizeof(arrayNumbers) < 5)
-		if (count < 5)
-		{
-			// arrayNumbers[count++] = num;
-			arrayNumbers[count] = num;
-			// cout << "Numbers registered: " << inputNumbers << endl; - ignore
-			// cout << "Numbers registered (into array): " << arrayNumbers[i] << endl;
-		}
-		++count;
-	}
-	if (count < 2 || count > 5)
-	{
-		cout << "Error, you must enter between 2 and 5 sets of numbers, separated by spaces! Please re-run: " << endl;
-		return 0;
-	}
-
-	// calculate sum based on number of inputs
-	int result = 0;
-	switch (count)
-	{
-	case 2:
-		result = Sum(arrayNumbers[0], arrayNumbers[1]);
-		break;
-	case 3:
-		result = Sum(arrayNumbers[0], arrayNumbers[1], arrayNumbers[2]);
-		break;
-	case 4:
-		result = Sum(arrayNumbers[0], arrayNumbers[1], arrayNumbers[2], arrayNumbers[3]);
-		break;
-	case 5:
-		result = Sum(arrayNumbers[0], arrayNumbers[1], arrayNumbers[2], arrayNumbers[3], arrayNumbers[4]);
-		break;
-	}
-
-	cout << "The sum of the entered numbers is: " << result << endl;
-
-	return 0;
+    switch (operatorInput)
+    {
+        // pointer is called operationFunction
+        // pointer points to the respective operation functions
+        case '+':
+            operationFunction = addFunction;
+            break;
+        case '-':
+            operationFunction = subtractFunction;
+            break;
+        case '*':
+            operationFunction = multiplyFunction;
+            break;
+        case '/':
+            operationFunction = divideFunction;
+            break;
+        case '^':
+            operationFunction = powerFunction;
+            break;
+        // no need default as i have already forced user input to be correct
+    }
+    // double result;
+    double result = operationFunction(firstNumber, secondNumber);
+    // if want to call directly from function, it will be userInputs(firstInputNumber)?
+    cout << "Result: " << result << endl;
+    
+    return 0;
 }
