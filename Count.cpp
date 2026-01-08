@@ -15,41 +15,43 @@ using namespace std;
 
 int main
 {
-  int count;
-  cout << "Please input a COUNT number: ";
-  cin >> count;
+	int count;
+	cout << "Please input a COUNT number: ";
+	cin >> count;
 
-  int totalCount = count; // store initial count value for average
+	int totalCount = count; // store initial count value for average
 
-  int sum{};
-  int minvalue = numeric_limits < int > ::max();
-  int maxvalue = numeric_limits < int> ::min();
+  	int sum{};
+  	int minvalue = numeric_limits < int > ::max();
+  	int maxvalue = numeric_limits < int> ::min();
 
-  while (count > 0)
-  {
-  	cout << "Enter a number : ";
-  	int input;
-	  cin >> input;
-	  cin.clear();
-	  // Discards invalid input, but stops the whole function
-  	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
-  	cout << "Registered: " << input << endl;
-
-  	if (input < minvalue)
+ 	 while (count > 0)
   	{
-  		minvalue = input;
-	  }
-  	if (input > maxvalue)
-  	{
-  		maxvalue = input;
-  	}
-  	sum += input;
+  		cout << "Enter a number : ";
+  		int input;
+		cin >> input;
+		cin.clear();
+		// Discards invalid input, but stops the whole function
+  		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+  		cout << "Registered: " << input << endl;
 
-	  --count;
-  }
+  		if (input < minvalue)
+	  	{
+  			minvalue = input;
+		}
+  		if (input > maxvalue)
+  		{
+  			maxvalue = input;
+  		}
+  		sum += input;
 
-  cout << "\nSum of all values: " << sum << endl;
-  cout << "Smallest value: " << minvalue << endl;
-  cout << "Largest value: " << maxvalue << endl;
-  cout << "Average: " << sum / (double)totalCount << endl;
+		--count;
+	}
+
+	cout << "\nSum of all values: " << sum << endl;
+	cout << "Smallest value: " << minvalue << endl;
+	cout << "Largest value: " << maxvalue << endl;
+	cout << "Average: " << sum / (double)totalCount << endl;
+
+	return 0;
 }
