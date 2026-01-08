@@ -1,5 +1,5 @@
 /*
-Target practise 2:
+Target practise #2:
 -	Develop an application that allows the user to set and read values from a 3-D space of 50 x 50 x 50 elements
   o	User is allowed to ether read, set or search a value
   o	For reading:
