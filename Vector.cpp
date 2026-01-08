@@ -24,6 +24,9 @@ Restrictions, assumptions:
 
 Idea: use switches to determine which actions to perform
 */
+#include <iostream>
+
+using namespace std;
 
 int main
 {
