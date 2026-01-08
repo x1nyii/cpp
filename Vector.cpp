@@ -27,109 +27,109 @@ Idea: use switches to determine which actions to perform
 
 int main
 {
-  int array[50][50][50] = {};
-  int choice, x, y, z, value;
+	int array[50][50][50] = {};
+  	int choice, x, y, z, value;
 
-  bool isalive = true;
-  while (isalive) 
-  {
-  	cout << "Which action do you want to perform? Key in 1, 2, 3 or 4. \n";
-  	cout << "1. Get value\n";
-  	cout << "2. Set value\n";
-  	cout << "3. Search value\n";
-  	cout << "4. Exit\n";
-  	cin >> choice;
-
-  	switch (choice)
+	bool isalive = true;
+  	while (isalive) 
   	{
-  	case 1:
-  		cout << "Enter the x, y, z co-ordinates between 0 to 49 to get the value: \n";
-  		cin >> x >> y >> z;
-  		// if co-ord is correct, print the value 
-	  	// else, re-enter
-	  	if (x >= 0 && x < 50 && y >= 0 && y < 50 && z >= 0 && z < 50)
+  		cout << "Which action do you want to perform? Key in 1, 2, 3 or 4. \n";
+  		cout << "1. Get value\n";
+  		cout << "2. Set value\n";
+  		cout << "3. Search value\n";
+ 	 	cout << "4. Exit\n";
+ 	 	cin >> choice;
+
+ 	 	switch (choice)
 	  	{
-	  		cout << "Value at address : " << x << "," << y << ", " << z << " is " << array[x][y][z] << ".\n";
-	  	}
-	  	else
-	  	{
-	  		cout << "Invalid address, please re-enter within value range. \n";
-  		}
-	  	break;
-
-  	case 2:
-	  	cout << "Enter the x, y, z co-ordinates between 0 to 49 to store the value: \n";
-	  	cin >> x >> y >> z >> value;
-
-  		cout << "The current value is: " << array[x][y][z] << endl;
-
-	  	if (x >= 0 && x < 50 && y >= 0 && y < 50 && z >= 0 && z < 50)
-  		{
-		  	array[x][y][z] = value;
-	  		cout << "Updated value at address : " << x << "," << y << ", " << z << " is " << array[x][y][z] << ".\n";
-	  	}
-	  	else
-		  {
-			  cout << "Invalid address, please re-enter within value range. \n";
-		  }
-		  break;
-  	case 3:
-	  {
-  		int searchValue = 0;
-	  	std::cin >> searchValue;
-  		bool isFound = false;
-	  	// output each element's value
-
-	  	for (int i = 0; i < 50; ++i)
-	  	{
-		  	for (int j = 0; j < 50; ++j)
+	  	case 1:
+  			cout << "Enter the x, y, z co-ordinates between 0 to 49 to get the value: \n";
+  			cin >> x >> y >> z;
+  			// if co-ord is correct, print the value 
+		  	// else, re-enter
+		  	if (x >= 0 && x < 50 && y >= 0 && y < 50 && z >= 0 && z < 50)
 		  	{
-  				for (int k = 0; k < 50; ++k)
-		  		{
-			  		if (array[i][j][k] == searchValue)
+		  		cout << "Value at address : " << x << "," << y << ", " << z << " is " << array[x][y][z] << ".\n";
+		  	}
+		  	else
+		  	{
+		  		cout << "Invalid address, please re-enter within value range. \n";
+  			}
+		  	break;
+
+  		case 2:
+		  	cout << "Enter the x, y, z co-ordinates between 0 to 49 to store the value: \n";
+		  	cin >> x >> y >> z >> value;
+
+  			cout << "The current value is: " << array[x][y][z] << endl;
+
+		  	if (x >= 0 && x < 50 && y >= 0 && y < 50 && z >= 0 && z < 50)
+ 	 		{
+			  	array[x][y][z] = value;
+		  		cout << "Updated value at address : " << x << "," << y << ", " << z << " is " << array[x][y][z] << ".\n";
+		  	}
+		  	else
+			  {
+				  cout << "Invalid address, please re-enter within value range. \n";
+			  }
+			  break;
+	  	case 3:
+		  {
+  			int searchValue = 0;
+	  		std::cin >> searchValue;
+  			bool isFound = false;
+	 	 	// output each element's value
+
+	 	 	for (int i = 0; i < 50; ++i)
+	 	 	{
+			  	for (int j = 0; j < 50; ++j)
+			  	{
+  					for (int k = 0; k < 50; ++k)
 			  		{
-			  			cout << "Value found: " << array[i][j][k] << endl;
-			  			cout << "Address of value: " << i << ", " << j << ", " << k << endl;
-			  			// return, will break out of the app
-			  			// dont use go to although its convi
-		  				// goto exitLoop;
-			  			isFound = true;
+				  		if (array[i][j][k] == searchValue)
+				  		{
+			  				cout << "Value found: " << array[i][j][k] << endl;
+			  				cout << "Address of value: " << i << ", " << j << ", " << k << endl;
+			  				// return, will break out of the app
+			  				// dont use go to although its convi
+		  					// goto exitLoop;
+			  				isFound = true;
+		  					break;
+			  			}
+
+					  	// int a = 10 * i + (j + 1);
+				  		// cout << "Element at array[%i][%i][%i] = %d\n", i, j, k, array[i][j][k];
+			  			// array[i][j][k] = (some_value);
+
+		 	 		}
+		  			// cout << endl;
+		  			if (isFound == true)
+		  			{
 		  				break;
-			  		}
-
-				  	// int a = 10 * i + (j + 1);
-			  		// cout << "Element at array[%i][%i][%i] = %d\n", i, j, k, array[i][j][k];
-		  			// array[i][j][k] = (some_value);
-
-		  		}
+		  			}
+	
+			  	}
 		  		// cout << endl;
 		  		if (isFound == true)
 		  		{
-		  			break;
-		  		}
+				  	break;
+			  	}
+	 	 	}
+	 	 	if (isFound == false)
+	 	 	{
+			  	cout << "Invalid address, please re-enter within value range. \n";
+	  		}
+	 	 	// exitLoop:
+  		}
+  		break;
+		case 4:
+			isalive = false;
+	 	 	break;
 
-		  	}
-		  	// cout << endl;
-		  	if (isFound == true)
-		  	{
-			  	break;
-		  	}
-	  	}
-	  	if (isFound == false)
-	  	{
-		  	cout << "Invalid address, please re-enter within value range. \n";
-	  	}
-	  	// exitLoop:
-  	}
-  	break;
-	  case 4:
-	  	isalive = false;
-	  	break;
+		default:
+		  	std::cout << "Invalid entry, please re-enter.\n";
+ 	 	}
+ 	 }
 
-	  default:
-	  	std::cout << "Invalid entry, please re-enter.\n";
-  	}
-  }
-
-  return 0;
+	  return 0;
 }
