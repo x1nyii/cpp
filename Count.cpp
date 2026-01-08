@@ -1,5 +1,5 @@
 /*
-Target practise 1:
+Target practise #1:
 -	Ask user for number to input a COUNT
 -	Ask user to key in COUNT numbers
 -	Return the min, max, sum and average of all entered numbers
