@@ -1,5 +1,5 @@
 /*
-Target practise #8:
+Target practise #9:
 -	Upgrade the console-based Diary to write data in a binary format to disk
 
 Restrictions, assumptions:
