@@ -1,22 +1,4 @@
-/*
-Target practise #16.1: 
--	A developer hands over his code to you on his last day of work
--	Required tasks on handover:
-    o	Extend the required 4 crates that the company is going to manage:
-
-Colour Code	      Material of Crate Contents
-Violet	          Malachite
-Dark Green	      Uranium
-Brown	            Barite
-Blue + Green	    Lead + Maganese
-
--	Repeated reminders that the current software has been in use for very long by users. Do not change anything that will break the software. “If it ain’t broken, don’t fix it.”
-
-Restrictions, assumptions:
--	None
-*/
-
-// The following code is the developer's original code
+// The following code is the developer's original code for the Crate target practices.
 
 #include <stdlib.h>
 #include <fstream>
