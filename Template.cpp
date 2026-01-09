@@ -1,5 +1,5 @@
 /*
-Target practise #9: 
+Target practise #10: 
 -	Develop a template function that computes the sum of an array.
   o	support for primitive data types (e.g. char, short, double… etc)
 
