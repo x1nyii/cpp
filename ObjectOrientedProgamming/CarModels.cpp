@@ -1,5 +1,5 @@
 /*
-Target practise #1:   
+Target practise #15.1:   
 -	A car game/simulator models a number of different car models. Design the various base/non-base classes for use, for a generic car with the following description:
   o	Components of a car: 
     >	Characteristics: Total weight, max speed, max acceleration, max turn radius
