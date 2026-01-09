@@ -6,6 +6,7 @@ Target practise #13:
 
 Restrictions, assumptions:
 -	Comment on this data compression algorithm
+- Not allowed to use #include <string>
 */
 
 #include <iostream>
