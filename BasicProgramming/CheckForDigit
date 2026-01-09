@@ -1,0 +1,59 @@
+/*
+Target practise #12:
+-	Develop an application that determines if an input from the user contains a specific digit
+  o	Enter a number: 8291928124
+  o	Check for digit: 3
+  o	Result: 3 does not exist
+  o	Check for digit: 8
+  o	Result: 8 exists
+
+Restrictions, assumptions:
+-	Do not use any string functions
+-	The input must be parsed as an (C#) Int64 / (C++) long long, then formulas applied to it
+*/
+
+#include <iostream>
+
+using namespace std;
+
+/// <summary>Check if a digit exists in a given number</summary>
+/// <param name="userNumber"></param>
+/// <param name="digit"></param>
+/// <returns>true if the digit exists within the userNumber, false otherwise</returns>
+bool CheckDigitExists(long long userNumber, int digit) 
+{
+    while (userNumber > 0) // Loop through each digit of the number
+    {
+        if (userNumber % 10 == digit) // Check if the current digit matches the target digit
+        {
+            return true; // digit found
+        }
+        userNumber /= 10; // remove last digit
+    }
+    return false;
+}
+
+int main()
+{
+    int x = 15;
+    int last_digit = x % 10; // This will be 5
+    cout << x << endl; //= 10              #This will be 1 (integer division)
+    
+    long long userNumber;
+    cin >> userNumber;
+
+    int checkDigit;
+
+    cout << "Enter a number: ";
+    cin >> userNumber;
+
+    cout << "Check for digit: ";
+    cin >> checkDigit;
+
+    // Call the function to check if the digit exists in the number
+    bool exists = CheckDigitExists(userNumber, checkDigit);
+
+    cout << "Result: " << checkDigit << (exists ? " exists" : " does not exist") << endl;
+
+    return 0;
+}
