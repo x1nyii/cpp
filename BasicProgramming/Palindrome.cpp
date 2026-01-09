@@ -23,7 +23,6 @@ string ToLowerCase(const string& word)
     {
         if (result[i] >= 'A' && result[i] <= 'Z') // check if word is uppercase
         {
-            
             result[i] += difference; // convert to lowercase by adding the difference between the ASCII values of a & A
             // result[i] += ('a' - 'A');
         }
