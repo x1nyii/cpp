@@ -26,7 +26,8 @@ int main()
 
     int choice;
 
-    while (true) {
+    while (true) 
+    {
         cout << "Menu:\n";
         cout << "1. Enter a your NRIC ID and name. (ID is case sensitive)\n";
         cout << "2. Retrieve a name based on a unique NRIC ID. (ID is case sensitive)\n";
